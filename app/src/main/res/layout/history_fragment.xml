@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/main"
+    android:orientation="horizontal">
+
+    <!--<ProgressBar-->
+    <!--android:id="@+id/progressBar"-->
+    <!--style="?android:attr/progressBarStyleHorizontal"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_marginLeft="40dp"-->
+    <!--android:layout_marginTop="84dp"-->
+    <!--android:indeterminate="false"-->
+    <!--android:max="100"-->
+    <!--android:minWidth="200dp"-->
+    <!--android:minHeight="50dp"-->
+    <!--android:progress="0" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/labelProgress"-->
+    <!--android:layout_width="134dp"-->
+    <!--android:layout_height="41dp"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_marginStart="245dp"-->
+    <!--android:layout_marginTop="95dp"-->
+    <!--android:text="0%" />-->
+    <Button
+        android:id="@+id/toBucket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="196dp"
+        android:text="Sync data from local to bucket" />
+
+    <Button
+        android:id="@+id/listFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="123dp"
+        android:text="List all files in folder" />
+
+    <Button
+        android:id="@+id/toLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="267dp"
+        android:text="Sync data from bucket to local" />
+
+
+</RelativeLayout>

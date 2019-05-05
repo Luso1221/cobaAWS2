@@ -1,0 +1,15 @@
+<resources>
+    <string-array name="UnitOfTime">
+        <item>Second(s)</item>
+        <item>Minute(s)</item>
+        <item>Hour(s)</item>
+        <item>Day(s)</item>
+    </string-array>
+
+    <string-array name="UnitOfTimeKeys">
+        <item>s</item>
+        <item>m</item>
+        <item>h</item>
+        <item>d</item>
+    </string-array>
+</resources>
