@@ -18,12 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:theme">
-        <activity android:name=".DebugActivity"></activity>
+        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".DebugActivity" />
         <activity
             android:name=".SettingActivity"
             android:label="Preferences"
             android:theme="@style/AppTheme" />
-        <activity android:name=".MenuActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,12 +49,10 @@
         </activity>
         <activity android:name=".BucketpickerActivity" />
         <activity android:name=".ConfigActivity" />
-        <receiver
-            android:name=".AlarmReceiver" >
-        </receiver>
 
-        <service android:name=".FolderCheckService"/>
+        <receiver android:name=".AlarmReceiver" />
 
+        <service android:name=".FolderCheckService" />
     </application>
 
 </manifest>

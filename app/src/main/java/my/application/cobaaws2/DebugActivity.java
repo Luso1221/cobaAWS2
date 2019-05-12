@@ -1,8 +1,6 @@
 package my.application.cobaaws2;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -30,13 +28,6 @@ import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class DebugActivity extends AppCompatActivity {
@@ -54,7 +45,7 @@ public class DebugActivity extends AppCompatActivity {
         final EditText pilihFileEdit = (EditText) findViewById(R.id.cobafile);
         Button getETag = (Button)findViewById(R.id.getETag);
         Button getChecksum = (Button)findViewById(R.id.getChecksum);
-        Button listObjectByKey = (Button)findViewById(R.id.listObjectByKey);
+        Button createProfile = (Button)findViewById(R.id.create_profile);
         getChecksum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,9 +109,12 @@ public class DebugActivity extends AppCompatActivity {
                 new UploadTask().execute(accessKey,secretKey,bucketName,keypath,filePath);
             }
         });
-        listObjectByKey.setOnClickListener(new View.OnClickListener() {
+        createProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MyDB db = new MyDB(getApplicationContext());
+                db.insertProfile("Dummy","infor-buck","/storage/emulated/0/Download/",
+                        "coba/",false,false,0);
 
 
             }
@@ -345,5 +339,4 @@ public class DebugActivity extends AppCompatActivity {
             return  null;
         }
     }
-
 }

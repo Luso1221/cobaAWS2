@@ -112,14 +112,24 @@
             android:text="Check etag" />
 
         <Button
-            android:id="@+id/listObjectByKey"
+            android:id="@+id/create_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="30dp"
             android:layout_marginTop="371dp"
-            android:text="List objects by key" />
+            android:text="Create profile" />
+
+        <Button
+            android:id="@+id/bucket_explorer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="179dp"
+            android:layout_marginTop="369dp"
+            android:text="Explore bucket" />
 
         <Button
             android:id="@+id/checksumdir"

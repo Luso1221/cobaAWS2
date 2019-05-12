@@ -22,46 +22,50 @@
             android:orientation="horizontal">
 
 
-            <Button
-                android:id="@+id/syncButton"
+            <TextView
                 android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="70dp"
+                android:fontFamily="sans-serif"
+                android:text="Folder:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif"
+                android:text="Profile Name:"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/name_edit"
+                android:layout_width="102dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="0dp"
-                android:text="Start Sync"
-                android:visibility="gone" />
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/labelFolder"
-                android:layout_width="wrap_content"
-                android:layout_height="52dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="37dp"
-                android:text="Folder:" />
-
-            <TextView
-                android:id="@+id/ProfileLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="52dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="19dp"
-                android:layout_marginTop="-1dp"
-                android:text="Profile :" />
-
-            <EditText
                 android:id="@+id/folderLocation"
                 android:layout_width="144dp"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="21dp"
-                android:layout_marginTop="65dp"
-                android:textSize="12dp" />
+                android:layout_marginStart="31dp"
+                android:layout_marginTop="98dp"
+                android:background="@drawable/border"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/selectFolder"
@@ -69,39 +73,46 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="176dp"
-                android:layout_marginTop="63dp"
-                android:text="Select folder" />
+                android:layout_marginStart="186dp"
+                android:layout_marginTop="96dp"
+                android:fontFamily="sans-serif"
+                android:text="Select folder"
+                android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/labelBucket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="23dp"
-                android:layout_marginTop="147dp"
-                android:text="Bucket and key path" />
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="180dp"
+                android:fontFamily="sans-serif"
+                android:text="Bucket and key path"
+                android:textSize="18sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/bucket_edit"
                 android:layout_width="138dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="166dp"
-                android:textSize="12dp" />
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="199dp"
+                android:background="@drawable/border"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/key_path"
                 android:layout_width="138dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="194dp"
-                android:textSize="12dp" />
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="227dp"
+                android:background="@drawable/border"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/selectBucket"
@@ -109,9 +120,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="176dp"
-                android:layout_marginTop="180dp"
-                android:text="Select bucket" />
+                android:layout_marginStart="185dp"
+                android:layout_marginTop="198dp"
+                android:fontFamily="sans-serif"
+                android:text="Select bucket"
+                android:textSize="18sp" />
 
 
             <Button
@@ -120,9 +133,59 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="149dp"
-                android:layout_marginTop="276dp"
-                android:text="Save" />
+                android:layout_marginStart="174dp"
+                android:layout_marginTop="431dp"
+                android:fontFamily="sans-serif"
+                android:text="Save"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/check_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="268dp"
+                android:fontFamily="sans-serif"
+                android:text="Use advanced settings"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/check_subfolder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="31dp"
+                android:layout_marginTop="312dp"
+                android:fontFamily="sans-serif"
+                android:text="Include subfolders"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="51dp"
+                android:layout_marginTop="379dp"
+                android:fontFamily="sans-serif"
+                android:text="Time between sync:"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/interval_edit"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="210dp"
+                android:layout_marginTop="367dp"
+                android:fontFamily="sans-serif"
+                android:text="15"
+                android:textSize="18sp" />
+
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

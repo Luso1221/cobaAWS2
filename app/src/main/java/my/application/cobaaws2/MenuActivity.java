@@ -70,57 +70,9 @@ public class MenuActivity extends AppCompatActivity {
         return true;
     }
 
-    // Prepare the Screen's standard options menu to be displayed. This is called right
-    // before the menu is shown, every time it is shown. You can use this method to
-    // efficiently enable/disable items or otherwise dynamically modify the contents.
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         return true;
-    }
-    public void printAllPermissions() {
-        StringBuilder text = new StringBuilder();
-        try {
-            PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_PERMISSIONS);
-            for (int i = 0; i < pi.requestedPermissions.length; i++) {
-                if ((pi.requestedPermissionsFlags[i] & PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0) {
-                    text.append(pi.requestedPermissions[i]).append("\n");
-                }
-            }
-        } catch (Exception e) {
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(text)
-                .setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //do things
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-    public void printAllSharedPreferences() {
-        StringBuilder text = new StringBuilder();
-        try {
-            Map<String,?> keys = PreferenceManager.getDefaultSharedPreferences(this).getAll();
-
-            for(Map.Entry<String,?> entry : keys.entrySet()){
-                text.append(entry.getKey() + ": " +
-                        entry.getValue().toString() + "\n");
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(text)
-                .setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //do things
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
     }
 }

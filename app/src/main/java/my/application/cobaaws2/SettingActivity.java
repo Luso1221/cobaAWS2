@@ -49,7 +49,6 @@ public class SettingActivity extends MenuActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-
         // hide the menu item
         menu.findItem(R.id.settingButton).setVisible(false);
         return true;
@@ -57,8 +56,6 @@ public class SettingActivity extends MenuActivity {
 
     public static class MyPreferenceFragment extends PreferenceFragment
     {
-
-
         @Override
         public void onCreate(final Bundle savedInstanceState)
         {

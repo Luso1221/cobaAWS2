@@ -1,14 +1,43 @@
 package my.application.cobaaws2;
 
-public class Profile {
-    private String profileName, bucketName, keyPath, folderPath;
-    private int interval;
-    private boolean customSettings, includeSubfolder;
+import android.content.Intent;
+import android.preference.PreferenceManager;
 
-    public Profile(String profileName, String bucketName, String keyPath, String folderPath,
-                   boolean customSettings, boolean includeSubfolder, int milliseconds) {
-        this.profileName = profileName;
-        this.bucketName = bucketName;
+public class Profile {
+    private Integer profile_id, interval, includeSubfolder, customSettings;
+    private String profile_name, bucket_name, keyPath, folderPath;
+
+
+
+    public Profile() {
+    }
+
+    public Intent toIntent(Intent intent){
+
+        intent.putExtra("profile_id", profile_id);
+        intent.putExtra("bucket_name", bucket_name);
+        intent.putExtra("localfolder_path", folderPath);
+        intent.putExtra("keypath", keyPath);
+        intent.putExtra("profile_name", profile_name);
+        intent.putExtra("include_subfolder", includeSubfolder);
+        intent.putExtra("setting",customSettings );
+        intent.putExtra("interval",interval);
+        return intent;
+    }
+
+    public Integer getProfile_id() {
+        return profile_id;
+    }
+
+    public void setProfile_id(Integer profile_id) {
+        this.profile_id = profile_id;
+    }
+
+    public Profile(Integer profile_id, String profileName, String bucketName, String keyPath, String folderPath,
+                   Integer customSettings, int includeSubfolder, int milliseconds) {
+        this.profile_id = profile_id;
+        this.profile_name = profileName;
+        this.bucket_name = bucketName;
         this.keyPath = keyPath;
         this.folderPath = folderPath;
         this.customSettings = customSettings;
@@ -16,24 +45,28 @@ public class Profile {
         this.interval = milliseconds;
     }
 
-    public String getProfileName() {
-        return profileName;
+    public String getProfile_name() {
+        return profile_name;
+    }
+
+    public void setInterval(int interval) {
+        this.interval = interval;
     }
 
     public int getInterval() {
         return interval;
     }
 
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
+    public void setProfile_name(String profile_name) {
+        this.profile_name = profile_name;
     }
 
-    public String getBucketName() {
-        return bucketName;
+    public String getBucket_name() {
+        return bucket_name;
     }
 
-    public void setBucketName(String bucketName) {
-        this.bucketName = bucketName;
+    public void setBucket_name(String bucket_name) {
+        this.bucket_name = bucket_name;
     }
 
     public String getKeyPath() {
@@ -52,19 +85,36 @@ public class Profile {
         this.folderPath = folderPath;
     }
 
-    public boolean isCustomSettings() {
-        return customSettings;
+    public Boolean useCustomSettings() {
+
+        return customSettings == 1;
+
     }
 
-    public void setCustomSettings(boolean customSettings) {
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "profile_id=" + profile_id +
+                ", interval=" + interval +
+                ", includeSubfolder=" + includeSubfolder +
+                ", customSettings=" + customSettings +
+                ", profile_name='" + profile_name + '\'' +
+                ", bucket_name='" + bucket_name + '\'' +
+                ", keyPath='" + keyPath + '\'' +
+                ", folderPath='" + folderPath + '\'' +
+                '}';
+    }
+
+    public void setCustomSettings(Integer customSettings) {
         this.customSettings = customSettings;
     }
 
-    public boolean isIncludeSubfolder() {
-        return includeSubfolder;
+    public Boolean isIncludeSubfolder() {
+        return includeSubfolder == 1;
+
     }
 
-    public void setIncludeSubfolder(boolean includeSubfolder) {
+    public void setIncludeSubfolder(Integer includeSubfolder) {
         this.includeSubfolder = includeSubfolder;
     }
 }

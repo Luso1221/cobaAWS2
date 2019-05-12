@@ -6,23 +6,15 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
-import android.app.job.JobParameters;
-import android.app.job.JobScheduler;
-import android.app.job.JobService;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.FileObserver;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Looper;
-import android.os.PersistableBundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.amazonaws.AmazonServiceException;
@@ -76,16 +68,23 @@ public class FolderCheckService extends IntentService {
 
         Log.e(TAG, "Service running");
         TransferNetworkLossHandler.getInstance(getApplicationContext());
-        //Classes.printIntentValues(intent);
-        String folder = intent.getStringExtra("folder");
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            for (String key : bundle.keySet()) {
+                Object value = bundle.get(key);
+                Log.e(TAG, String.format("%s %s (%s)", key,
+                        value != null ? value.toString() : "NULL", value != null ? value.getClass().getName() : "NULL"));
+            }
+        }
+        String folder = intent.getStringExtra("localfolder_path");
         String accesskey= intent.getStringExtra("accesskey");
         String secretkey = intent.getStringExtra("secretkey");
-        String bucket = intent.getStringExtra("bucket");
+        String bucket = intent.getStringExtra("bucket_name");
+        String profile_name = intent.getStringExtra("profile_name");
         String keypath= intent.getStringExtra("keypath");
 
         File directory = new File(folder);
-
-//        Log.e("Total directory:",Integer.toString(objectList.getCommonPrefixes().size()));
+        Log.e(TAG, "onHandleIntent: "+directory.listFiles().length);
         List<FileData> files = Classes.listSortedFiles(directory);
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accesskey,secretkey);
         AmazonS3Client s3Client = new AmazonS3Client(awsCredentials);
@@ -96,7 +95,6 @@ public class FolderCheckService extends IntentService {
         List<S3ObjectSummary> objectSummary = objectList.getObjectSummaries();
 
         for (FileData file: files) {
-//                Log.e("Key:",s.getKey());
             String uploadDestination = keypath + file.getFileName();
             if(keypath.equals("root"))
                 uploadDestination = file.getFileName();
@@ -110,11 +108,7 @@ public class FolderCheckService extends IntentService {
                 final TransferObserver uploadObserver =
                         transferUtility.upload(
                                 bucket, uploadDestination, new File(file.getFilePath()));
-
-                // Attach a listener to the observer to get state update and progress notifications
-                //final String finalKeyName = keyName;
                 NotificationChannel notificationChannel = new NotificationChannel(Long.toString(System.currentTimeMillis()%1000),"monitor",NotificationManager.IMPORTANCE_DEFAULT);
-
                 NotificationManager notificationManager = getSystemService(NotificationManager.class);
                 notificationManager.createNotificationChannel(notificationChannel);
                 NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, notificationChannel.getId())
@@ -129,14 +123,7 @@ public class FolderCheckService extends IntentService {
 
                     @Override
                     public void onStateChanged(int id, TransferState state) {
-                        if (TransferState.COMPLETED == state) {
-                            // Handle a completed upload.
-                            Log.e("Finish", "");
-                        }
-                        Log.e("State", state.toString());
-                        if (TransferState.FAILED == state) {
-                            Log.e("Failed", "");
-                        }
+                        Log.e("State", state.name());
                     }
 
                     @Override
@@ -145,16 +132,13 @@ public class FolderCheckService extends IntentService {
                         int percentDone = (int) percentDonef;
                         notificationBuilder.setProgress(100,percentDone,false);
                         notificationManager.notify(Integer.valueOf(notificationChannel.getId()),notificationBuilder.build());
-                        Log.e("YourActivity", "ID:" + id + " bytesCurrent: " + bytesCurrent
+                        Log.e(TAG, "ID:" + id + " bytesCurrent: " + bytesCurrent
                                 + " bytesTotal: " + bytesTotal + " " + percentDone + "%");
                     }
 
                     @Override
                     public void onError(int id, Exception ex) {
-                        // Handle errors
                         Log.e("Error", "" + ex.getMessage());
-
-//                            transferUtility.upload(bucketName, finalKeyName,file);
                     }
 
                 });
@@ -166,7 +150,6 @@ public class FolderCheckService extends IntentService {
                 Log.e(TAG, "Checksum matches");
             }
         }
-        //getETAG(accesskey,secretkey,bucket,keypath);
 
 
     }

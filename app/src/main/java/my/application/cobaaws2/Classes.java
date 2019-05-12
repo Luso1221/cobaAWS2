@@ -59,6 +59,7 @@ public class Classes {
         Collections.sort(al);
         return  al;
     }
+
     public static String calculateChecksumForMultipartUpload(List<String> md5s) {
         StringBuilder stringBuilder = new StringBuilder();
         for (String md5:md5s) {
@@ -67,13 +68,14 @@ public class Classes {
 
         String hex = stringBuilder.toString();
         byte raw[] = BaseEncoding.base16().decode(hex.toUpperCase());
-        @SuppressWarnings({"deprecation", "UnstableApiUsage"})
+
         Hasher hasher = Hashing.md5().newHasher();
         hasher.putBytes(raw);
         String digest = hasher.hash().toString();
 
         return digest;
     }
+
     public static boolean containsChecksum(List<S3ObjectSummary> list, String hash){
         for(S3ObjectSummary object: list){
             if(object!=null && object.getETag() == hash){
@@ -98,6 +100,7 @@ public class Classes {
             }
         }
     }
+
     public static String calculateMD5(File file) {
         MessageDigest digest = null;
         try {

@@ -44,9 +44,9 @@ public class BucketpickerActivity extends MenuActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bucketpicker_activity);
+        setContentView(R.layout.bucketpicker_layout);
         init();
-        recyclerView = (RecyclerView) findViewById(R.id.bucketListView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
@@ -60,6 +60,7 @@ public class BucketpickerActivity extends MenuActivity {
         // specify an adapter (see also next example)
         //recyclerView.setAdapter(mAdapter);
     }
+
     public class BucketAdapter extends RecyclerView.Adapter<BucketAdapter.ViewHolder> {
 
         private List<Bucket> mBuckets;
@@ -127,7 +128,7 @@ public class BucketpickerActivity extends MenuActivity {
         }
 
 
-}
+    }
     public class ListBuckets extends AsyncTask<String, Void, List<Bucket>> {
         private final ProgressDialog dialog = new ProgressDialog(BucketpickerActivity.this);
 
@@ -144,7 +145,7 @@ public class BucketpickerActivity extends MenuActivity {
             Log.e("Status","Done fetching buckets..");
             mAdapter = new BucketAdapter(bucketList);
             mAdapter.notifyDataSetChanged();
-            ((RecyclerView)findViewById(R.id.bucketListView)).setAdapter(mAdapter);
+            ((RecyclerView)findViewById(R.id.recyclerView)).setAdapter(mAdapter);
             dialog.dismiss();
         }
 
@@ -225,6 +226,7 @@ public class BucketpickerActivity extends MenuActivity {
                         new ArrayAdapter<String>
                                 (BucketpickerActivity.this, android.R.layout.select_dialog_item);
                 List<S3ObjectSummary> objectSummary = keys.getObjectSummaries();
+                arrayAdapter.add("root");
                 for (S3ObjectSummary s: objectSummary) {
 //                Log.e("Key:",s.getKey());
                     arrayAdapter.add(s.getKey());

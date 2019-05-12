@@ -1,154 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
-    android:orientation="vertical">
+    tools:context=".BucketpickerActivity"
+    android:orientation="vertical"
+    android:background="@color/cardview_shadow_start_color"
+    >
 
-    <RelativeLayout
-        android:id="@+id/button"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/createNewProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginVertical="12dp"
-        android:paddingBottom="20dp"
-        android:background="@android:color/background_light">
+        android:layout_gravity="bottom|right"
+        android:tint="@android:color/white"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_input_add"
+        />
 
-        <!--<ProgressBar-->
-        <!--android:id="@+id/progressBar"-->
-        <!--style="?android:attr/progressBarStyleHorizontal"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_marginLeft="40dp"-->
-        <!--android:layout_marginTop="84dp"-->
-        <!--android:indeterminate="false"-->
-        <!--android:max="100"-->
-        <!--android:minWidth="200dp"-->
-        <!--android:minHeight="50dp"-->
-        <!--android:progress="0" />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
-        <!--<TextView-->
-        <!--android:id="@+id/labelProgress"-->
-        <!--android:layout_width="134dp"-->
-        <!--android:layout_height="41dp"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_marginStart="245dp"-->
-        <!--android:layout_marginTop="95dp"-->
-        <!--android:text="0%" />-->
-
-        <Switch
-            android:id="@+id/syncButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="174dp"
-            android:layout_marginTop="40dp"
-            android:text="Start Sync" />
+    </androidx.recyclerview.widget.RecyclerView>
 
 
-        <ImageButton
-            android:id="@+id/settingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="175dp"
-            android:contentDescription="TODO"
-            android:src="@android:drawable/ic_menu_edit"
-            android:tint="@android:color/background_dark" />
-
-        <Button
-            android:id="@+id/restoreButton"
-            android:layout_width="103dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="157dp"
-            android:layout_marginTop="105dp"
-            android:contentDescription="TODO"
-            android:src="@android:drawable/ic_menu_edit"
-            android:text="Restore"
-            android:tint="@android:color/background_dark" />
-
-        <TextView
-            android:id="@+id/labelBucket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="50dp"
-            android:fontFamily="monospace"
-            android:text="Bucket-name:" />
-
-        <!--<TextView-->
-            <!--android:id="@+id/labelKey"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentStart="true"-->
-            <!--android:layout_alignParentTop="true"-->
-            <!--android:layout_marginStart="15dp"-->
-            <!--android:layout_marginTop="109dp"-->
-            <!--android:fontFamily="monospace"-->
-            <!--android:text="Key-path:" />-->
-
-        <TextView
-            android:id="@+id/labelFolder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="185dp"
-            android:fontFamily="monospace"
-            android:text="Local-folder path:"/>
-
-        <TextView
-            android:id="@+id/txt_folder"
-            android:layout_width="123dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="227dp"
-            android:background="@drawable/border"
-            android:text=""
-            android:typeface="monospace" />
-
-        <TextView
-            android:id="@+id/txt_bucket"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="97dp"
-            android:background="@drawable/border"
-            android:text=""
-            android:typeface="monospace" />
-
-        <TextView
-            android:id="@+id/txt_key_path"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="136dp"
-            android:background="@drawable/border"
-            android:text=""
-            android:typeface="monospace" />
-
-
-    </RelativeLayout>
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

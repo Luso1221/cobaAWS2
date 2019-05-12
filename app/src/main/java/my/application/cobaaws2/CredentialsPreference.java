@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3Client;
@@ -58,7 +60,7 @@ public class CredentialsPreference extends DialogPreference implements DialogInt
 
     public class Authenticate extends AsyncTask<String, Void, Boolean> {
         private final ProgressDialog dialog = new ProgressDialog(getContext());
-
+        String accesskey,secretkey;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -80,8 +82,8 @@ public class CredentialsPreference extends DialogPreference implements DialogInt
                     public void onDismiss(DialogInterface dialog) {
 
                         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-                        editor.putString("accesskey", ((EditText)myView.findViewById(R.id.txt_access_key)).getText().toString());
-                        editor.putString("secretkey", ((EditText)myView.findViewById(R.id.txt_secret_key)).getText().toString());
+                        editor.putString("accesskey", accesskey);
+                        editor.putString("secretkey", secretkey);
                         editor.apply();
                         dialog.dismiss();
                         Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
@@ -102,12 +104,12 @@ public class CredentialsPreference extends DialogPreference implements DialogInt
 
         @Override
         protected Boolean doInBackground(String... params) {
-            String accessKey =  params[0];
-            String secretKey =  params[1];
+            accesskey =  params[0];
+            secretkey =  params[1];
             try {
 //             Initialize the Amazon Cognito credentials provider
-                BasicAWSCredentials awsCreds = new BasicAWSCredentials(accessKey,
-                        secretKey);
+                BasicAWSCredentials awsCreds = new BasicAWSCredentials(accesskey,
+                        secretkey);
 
 
                 AmazonS3Client s3Client = new AmazonS3Client(awsCreds);

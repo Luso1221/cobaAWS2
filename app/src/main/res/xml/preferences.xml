@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="AWS Credentials">
-    <!--<EditTextPreference android:title="Access Key"-->
-        <!--android:key="accesskey"-->
-        <!--android:summary="Please provide your access key"/>-->
-        <!--<EditTextPreference android:title="Secret Key"-->
-        <!--android:key="secretkey"-->
-        <!--android:summary="Please provide your secret key"/>-->
         <my.application.cobaaws2.CredentialsPreference
             android:title="Access key and secret key"
             android:summary="">
@@ -14,12 +8,6 @@
         </my.application.cobaaws2.CredentialsPreference>
     </PreferenceCategory>
     <PreferenceCategory android:title="Default settings ">
-    <!--<EditTextPreference android:title="Access Key"-->
-        <!--android:key="accesskey"-->
-        <!--android:summary="Please provide your access key"/>-->
-        <!--<EditTextPreference android:title="Secret Key"-->
-        <!--android:key="secretkey"-->
-        <!--android:summary="Please provide your secret key"/>-->
         <SwitchPreference
             android:key="subfolders"
             android:title="Include subfolders"
@@ -39,35 +27,6 @@
             android:title="Unit of time"
             android:entries="@array/UnitOfTime"
             android:entryValues="@array/UnitOfTimeKeys"/>
-        <EditTextPreference
-            android:key="min_bandwidth"
-            android:summary=""
-            android:title="Minimum bandwidth usage"
-            android:defaultValue="15"
-            android:inputType="number"/>
-        <EditTextPreference
-            android:key="max_bandwidth"
-            android:summary=""
-            android:title="Maximum bandwidth usage"
-            android:defaultValue="15"
-            android:inputType="number"/>
 
     </PreferenceCategory>
-    <!--<EditTextPreference android:title="Access Key"-->
-        <!--android:key="accesskey"-->
-        <!--android:summary="Please provide your access key"/>-->
-        <!--<EditTextPreference android:title="Secret Key"-->
-        <!--android:key="secretkey"-->
-        <!--android:summary="Please provide your secret key"/>-->
-
-    <!--<CheckBoxPreference android:title="Application Updates"-->
-        <!--android:defaultValue="false"-->
-        <!--android:summary="This option if selected will allow the application to check for latest versions."-->
-        <!--android:key="applicationUpdates" />-->
-    <!--<ListPreference     android:title="Download Details"-->
-        <!--android:summary="Select the kind of data that you would like to download"-->
-        <!--android:key="downloadType"-->
-        <!--android:defaultValue="1"-->
-        <!--android:entries="@array/listArray"-->
-        <!--android:entryValues="@array/listValues" />-->
 </PreferenceScreen>
